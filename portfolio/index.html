@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>personal portfolio website</title>
+       <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="nav-buttons">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </nav>
+
+       <section id="home">
+            <div class="main">
+                <div class="text-content">
+                    <h1 class="headings">I'M <br> <span>Venu</span> Azmeera</h1>
+                    <!-- <button class="btn">Hire me</button> -->
+                    <a href="https://www.linkedin.com/in/venu-azmeera-524786209/" target="_blank" class="btn-link">
+                        <button class="btn">Hire me</button>
+                    </a>                    
+                </div>
+                <div class="profile">
+                    <!-- <img src="../images/My project (4).webp.webp" alt="#"> -->
+                    <img src="../images/My project (4).webp.webp" class="main-img" alt="#">
+                    <!-- <img src="../images/Myproject21-webp.webp" class="shape"> -->
+                </div>
+            </div>
+       </section> 
+
+       <section id="about">
+        <h1 class="headings">ABOUT ME</h1>
+        <div id="pic">
+            <!-- <img src="" alt="#"> -->
+            <!--<img src="My project (4).png" alt="me">--->
+            <div id="intro">
+                <h2>VENUKUMAR AZMEERA</h2>
+                <p>Hello there! I'm Venukumar Azmeera i was completed
+                B.com(ca) graduation from kakatiya university warangal,
+                I was worked as resident relationship manager at adarsha
+                nexa warangal, and Iam recently started a job as UI&UX
+                devoloper at smart squads digital solution. here my 
+                resposibilities are devoloping websites as clints 
+                requirements for now i'm in my training period of  three
+                months after that my actual job starts as web developer,
+                this is my first portfolio website. and you will get to
+                know about my portfolio down there in portfolio section 
+                i'm droping my resume please check it out once and if you
+                any offers you can contact through my about section there
+                you can find my social media accounts Thank you.
+            </p>
+            </div>
+        </div>
+        </section>
+
+        <section id="portfolio">
+            <h1 class="headings">PORTFOLIO</h1>
+            <div class="gallery">
+                <img src="../images/ezgif.com-gif-maker-1.webp" alt="">
+                <img src="../images/ezgif.com-gif-maker-2.webp" alt="">
+                <img src="../images/ezgif.com-gif-maker-3.webp" alt="">
+                <img src="../images/ezgif.com-gif-maker-4.webp" alt="">
+                <img src="../images/ezgif.com-gif-maker.webp" alt="">
+                <img src="../images/image.6.webp" alt="">
+            </div>
+        </section>
+
+        <section id="services">
+            <h1 class="headings">SERVICE</h1>
+            <div class="row">
+                <div class="box">
+                    <img src="../images/ezgif.com-gif-maker-6.webp" alt="">
+                    <h1 class="headings">Web Design</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing 
+                    elit. Possimus quaerat accusantium enim ratione 
+                    inventore porro beatae commodi obcaecati omnis nobis
+                    blanditiis, vitae deserunt saepe est nisi sunt modi, 
+                    perspiciatis itaque!</p>
+                </div>
+
+                <div class="box">
+                    <img src="../images/user-experience.webp.webp" alt="">
+                    <h1 class="headings">UI&UX<br>Design</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing 
+                    elit. Possimus quaerat accusantium enim ratione 
+                    inventore porro beatae commodi obcaecati omnis nobis
+                    blanditiis, vitae deserunt saepe est nisi sunt modi, 
+                    perspiciatis itaque!</p>
+                </div>
+
+                <div class="box">
+                    <img src="../images/broadcast.webp" alt="">
+
+                    <h1 class="headings">Digital Marketing</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing 
+                    elit. Possimus quaerat accusantium enim ratione 
+                    inventore porro beatae commodi obcaecati omnis nobis
+                    blanditiis, vitae deserunt saepe est nisi sunt modi, 
+                    perspiciatis itaque!</p>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h1 class="headings">CONTACT</h1>
+            <form id="contact-form" class="form">
+                <input type="text" name="name" id="name" class="input" placeholder="Enter Your Name" required>
+                <input type="email" name="email" id="email" class="input" placeholder="Enter Your Email" required>
+                <textarea name="msg" id="msg" cols="30" rows="10" placeholder="Enter Your Message" required></textarea>
+                <input type="submit" value="SEND" id="send">
+            </form>            
+            
+        </section>
+
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent the default form submission
+            
+                // Gather form data
+                const formData = new FormData(this);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    msg: formData.get('msg')
+                };
+            
+                try {
+                    // Send data to the API
+                    // const response = await fetch('http://localhost:3006/api/contact', {
+                    const response = await fetch('https://portfolio-backend-6eveydxha-venuazmeeras-projects.vercel.app/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+            
+                    if (response.ok) {
+                        alert('Message sent successfully!');
+                        document.getElementById('contact-form').reset(); // Reset form after successful submission
+                    } else {
+                        alert('Failed to send message.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred.');
+                }
+            });
+            </script>
+            
+    </body>
+</html>
